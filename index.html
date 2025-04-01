@@ -11,86 +11,73 @@
     <style>
         .profile-img {
             width: 100%; /* Adjust image size as needed */
-            max-width: 150px; /* Added max-width for better control */
             height: auto; /* Maintain aspect ratio */
             object-fit: cover; /* Maintain aspect ratio and crop if necessary */
         }
         .publication-item {
-            position: relative; /* Needed for absolute positioning of the button */
-            margin-bottom: 15px; /* Add some space between publications */
-			padding: 10px 40px 0px 15px; /* Added padding top/bottom and right for button */
-            border-radius: 5px; /* Optional: slightly rounded corners */
-            transition: background-color 0.2s ease-in-out; /* Smooth background transition on hover */
-        }
-        /* Add a subtle background on hover to indicate interactivity */
-        .publication-item:hover {
-            background-color: #f8f9fa; /* Light grey background */
-        }
+            display: flex;
+            align-items: center; /* Align items to the top */
+            padding: 5px 15px 5px 15px; /* Symmetrical horizontal padding */
+            border-radius: 5px;
 
-        .unavailable i.fas {
-        color: #aaaaaa; /* A medium grey color */
-        cursor: default;
-        /* Or use 'grey', '#999', 'darkgrey' etc. */
+            transition: background-color 0.2s ease-in-out;
+            flex-wrap: wrap; /* Allow details div to wrap below */
+        }
+        .publication-item:hover {
+            background-color: #f8f9fa;
         }
 
         .expand-btn {
-            position: absolute;
-            top: 10px; /* Adjust vertical position */
-            right: 10px; /* Adjust horizontal position */
             background: none;
             border: none;
-            color: #6c757d; /* Bootstrap secondary color */
+            color: #6c757d;
             font-size: 1rem;
             cursor: pointer;
-            padding: 5px;
-            line-height: 1;
-            opacity: 0; /* Hidden by default */
-            visibility: hidden; /* Hide completely */
-            transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s; /* Fade effect */
+            padding: 0; /* Adjust padding if needed */
+            line-height: 1.5; /* Match text line height roughly */
+            margin-right: 10px; /* Add space between button and text */
+            flex-shrink: 0; /* Prevent button from shrinking */
+            /* Keep visibility/transition */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s;
         }
 
         .publication-item:hover .expand-btn {
-            opacity: 1; /* Visible on hover */
+            opacity: 1;
             visibility: visible;
-            transition-delay: 0s; /* Show immediately on hover */
+            transition-delay: 0s;
         }
 
         .expand-btn:hover {
-            color: #0056b3; /* Darker blue on hover */
+            color: #0056b3;
         }
 
-        .publication-details {
-            display: none; /* Hidden by default */
-            margin-top: 10px;
-            padding-left: 15px; /* Indent details */
-            border-left: 3px solid #dee2e6; /* Bootstrap border color */
+        /* Ensure the text div takes remaining space */
+        .publication-item > div:nth-of-type(1) { /* Target the first div (text content) */
+             flex-grow: 1; /* Allow text div to grow */
+             /* REMOVE margin-right: 20px; */
         }
-        .publication-details p { /* Style abstract */
-            font-style: italic;
-            color: #555;
-            margin-bottom: 10px;
+
+        .authors {
+            margin-bottom: 0;
         }
-        .publication-links a {
-            margin-right: 15px; /* Space out icons */
-            color: #0056b3;
-            font-size: 1.2rem;
-            text-decoration: none;
+
+        .modal-footer {
+            justify-content: left;
         }
-         .publication-links a:hover {
-             color: #007bff; /* Bootstrap primary color */
-         }
 
 
         .social-links {
-            margin-top: 10px;
+            margin-top: 5px;
             display: flex;
-            justify-content: center; /* Center icons below image */
+            justify-content: center;
             align-items: center;
         }
         .social-links a {
             color: #333;
             font-size: 1.5rem;
-            margin: 0 8px; /* Adjusted margin */
+            margin: 5px;
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -98,26 +85,57 @@
             color: #0056b3;
         }
 
-        /* Ensure publication text wraps correctly */
-        .publication-item > div:first-of-type {
-             margin-right: 20px; /* Space between text and potential button area */
+        .publication-details {
+            display: none;
+            margin-top: 10px;
+            /* Indent details relative to the item's padding */
+            /* padding-left: 15px; (Now relative to the container) */
+            /* border-left: 3px solid #dee2e6; */
+            width: 100%; /* Make details take full width */
+            padding-left: calc(1rem + 10px + 15px); /* Align with text (button font-size + margin + item padding) - adjust as needed */
+            border-left: none; /* Remove border or style differently if desired */
+        }
+        .publication-details p {
+            font-style: italic;
+            color: #555;
+            /* margin-bottom: 10px; */
+            border-left: 3px solid #dee2e6; /* Maybe move border here */
+            padding-left: 10px; /* Add padding inside the border */
+        }
+        .publication-links {
+            /* Keep original link styling */
+             margin-top: 10px; /* Add some space above links */
+        }
+         .publication-links {
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        .publication-links a {
+            margin-right: 10px;
+            color: #0056b3;
+            text-decoration: none;
         }
 
-        /* Ensure the footnote doesn't get hover effects or button */
-        .publication-footnote {
+        .publication-links .unavailable {
+            color: #ccc;
+            pointer-events: none;
+        }
+
+         .publication-links a:hover {
+             color: #007bff;
+         }
+
+         /* Ensure footnote styling remains */
+         .publication-footnote {
             padding-left: 15px;
             margin-bottom: 15px;
+            width: 100%; /* Ensure it takes full width below flex items */
         }
          .publication-footnote:hover { /* Override hover effect */
              background-color: transparent;
          }
 
-
     </style>
-
-
-
-
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQND47EQNE"></script>
@@ -125,7 +143,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-PQND47EQNE');
 </script>
 <body>
@@ -136,8 +153,8 @@
                 <p class="lead">Ph.D. Student, Computer Systems Laboratory (CSL), Cornell University</p>
             </header>
 
-            <section class="profile row align-items-center"> <!-- Use align-items-center -->
-                <div class="col-md-2 text-center"> <!-- Added text-center -->
+            <section class="profile row"> <!-- Use align-items-center -->
+                <div class="col-md-2"> <!-- Added text-center -->
                     <img src="dquinn.jpeg" alt="Profile Picture of Derrick Quinn" class="profile-img rounded-circle mb-2">
                     <div class="social-links">
                         <a href="https://scholar.google.com/citations?user=6UxxJ1kAAAAJ&hl=en" target="_blank" title="Google Scholar">
@@ -151,11 +168,11 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-10"> <!-- Changed to col-md-10 -->
+                <div class="col-md-8">
                     <p>Derrick Quinn is a first-year Ph.D. student in the <a href="https://www.csl.cornell.edu/" target="_blank" rel="noopener noreferrer">Computer Systems Laboratory (CSL)</a> at the <a href="https://www.ece.cornell.edu/" target="_blank" rel="noopener noreferrer">School of Electrical and Computer Engineering</a>, <a href="https://www.cornell.edu" target="_blank" rel="noopener noreferrer">Cornell University</a>, where he is advised by <a href="https://alian.csl.cornell.edu/" target="_blank" rel="noopener noreferrer">Professor Mohammad Alian</a>.
                         His research interests are centered around algorithm-hardware co-design of distributed and heterogeneous computer systems. Currently, he focuses on semantic retrieval systems leveraging near-data processing techniques for improved efficiency. Derrick's goal is to develop generalized and scalable architectures for AI systems, promoting interoperability, adaptability, and sustainability across diverse computing environments.
-                    </p> <!-- Removed closing </div> here -->
-                </div> <!-- Added closing </div> here -->
+                    </p> 
+                </div> 
             </section>
 
             <section class="mt-5">
@@ -163,33 +180,39 @@
 
                 <!-- Publication 1 -->
                 <div class="publication-item">
-                     <div> <!-- Wrapper for text content -->
-                        <a target="_blank">DReX: Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign</a> (Accepted at ISCA 2025) <br>
-                        <p style="font-size: smaller;"><strong>Derrick Quinn</strong>*, Emine Ezgi Yücel*, Martin Prammer, Zhenxing Fan, Kevin Skadron, Jignesh Patel, José Martínez, Mohammad Alian. </p>
-                    </div>
                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
                         <i class="fas fa-chevron-down"></i>
                     </button>
+                     <div> <!-- Wrapper for text content -->
+                        <a target="_blank">DReX: Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign</a> (Accepted at ISCA 2025) <br>
+                        <p class="authors" style="font-size: smaller;"><strong>Derrick Quinn</strong>*, Emine Ezgi Yücel*, Martin Prammer, Zhenxing Fan, Kevin Skadron, Jignesh Patel, José Martínez, Mohammad Alian. </p>
+                    </div>
                     <div class="publication-details">
-                        <p><strong>Abstract:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p><strong>Abstract:</strong> Coming soon!</p>
                         <div class="publication-links">
                             <a href="#" title="PDF" class="unavailable"><i class="fas fa-file-pdf"></i></a>
                             <a href="#" title="Project Link" class="unavailable"><i class="fas fa-link"></i></a>
                             <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
-                            <!-- Add more links as needed -->
+                            <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
+                            <!-- *** BibTeX Button Added Here *** -->
+                            <a href="#" title="BibTeX" class="bibtex-btn unavailable">
+                                <i class="fas fa-quote-right"></i>
+                            </a>
+                            <!-- *** End BibTeX Button *** -->
                         </div>
                     </div>
                 </div>
 
                 <!-- Publication 2 -->
+                 
                 <div class="publication-item">
-                     <div> <!-- Wrapper for text content -->
-                        <a href="https://dl.acm.org/doi/10.1145/3669940.3707264" target="_blank">Accelerating Retrieval-Augmented Generation</a> (ASPLOS 2025) <br>
-                        <p style="font-size: smaller;"><strong>Derrick Quinn</strong>, Mohammad Nouri, Neel Patel, John Salihu, Alireza Salemi, Sukhan Lee, Hamed Zamani, Mohammad Alian.  </p>
-                    </div>
-                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
+                    <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
                         <i class="fas fa-chevron-down"></i>
                     </button>
+                     <div> <!-- Wrapper for text content -->
+                        <a href="https://dl.acm.org/doi/10.1145/3669940.3707264" target="_blank">Accelerating Retrieval-Augmented Generation</a> (ASPLOS 2025) <br>
+                        <p class="authors" style="font-size: smaller;"><strong>Derrick Quinn</strong>, Mohammad Nouri, Neel Patel, John Salihu, Alireza Salemi, Sukhan Lee, Hamed Zamani, Mohammad Alian.  </p>
+                    </div>
                      <div class="publication-details">
                         <p><strong>Abstract:</strong> An evolving solution to address hallucination and enhance accuracy in large language models (LLMs) is Retrieval-Augmented Generation (RAG), which involves augmenting LLMs with information retrieved from an external knowledge source, such as the web. This paper profiles several RAG execution pipelines and demystifies the complex interplay between their retrieval and generation phases. We demonstrate that while exact retrieval schemes are expensive, they can reduce inference time compared to approximate retrieval variants because an exact retrieval model can send a smaller but more accurate list of documents to the generative model while maintaining the same end-to-end accuracy. This observation motivates the acceleration of the exact nearest neighbor search for RAG.
                             <br><br>In this work, we design Intelligent Knowledge Store (IKS), a type-2 CXL device that implements a scale-out near-memory acceleration architecture with a novel cache-coherent interface between the host CPU and near-memory accelerators. IKS offers 13.4–27.9× faster exact nearest neighbor search over a 512GB vector database compared with executing the search on Intel Sapphire Rapids CPUs. This higher search performance translates to 1.7–26.3× lower end-to-end inference time for representative RAG applications. IKS is inherently a memory expander; its internal DRAM can be disaggregated and used for other applications running on the server to prevent DRAM–which is the most expensive component in today's servers–from being stranded.</p>
@@ -197,25 +220,69 @@
                             <a href="https://arxiv.org/pdf/2412.15246" target="_blank" title="Paper Link"><i class="fas fa-file-pdf"></i></a>
                             <a href="https://dl.acm.org/doi/10.1145/3669940.3707264" target="_blank" title="Paper Link"><i class="fas fa-link"></i></a>
                             <a href="https://github.com/architecture-research-group/ae-asplos25-iks.git" title="Code"><i class="fas fa-code"></i></a>
+                            <a href="ASPLOS_IKS.pdf" title="Slides"><i class="fas fa-file-powerpoint"></i></a>
+                             <!-- *** BibTeX Button Added Here *** -->
+                            <a href="#" title="BibTeX" class="bibtex-btn" data-bs-toggle="modal" data-bs-target="#bibtexModal"
+                               data-bibtex="@inproceedings{quinn_2025_rag,
+    author = {Quinn, Derrick and Nouri, Mohammad and Patel, Neel and Salihu, John and Salemi, Alireza and Lee, Sukhan and Zamani, Hamed and Alian, Mohammad},
+    title = {Accelerating Retrieval-Augmented Generation},
+    year = {2025},
+    isbn = {9798400706981},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3669940.3707264},
+    doi = {10.1145/3669940.3707264},
+    abstract = {An evolving solution to address hallucination and enhance accuracy in large language models (LLMs) is Retrieval-Augmented Generation (RAG), which involves augmenting LLMs with information retrieved from an external knowledge source, such as the web. This paper profiles several RAG execution pipelines and demystifies the complex interplay between their retrieval and generation phases. We demonstrate that while exact retrieval schemes are expensive, they can reduce inference time compared to approximate retrieval variants because an exact retrieval model can send a smaller but more accurate list of documents to the generative model while maintaining the same end-to-end accuracy. This observation motivates the acceleration of the exact nearest neighbor search for RAG.In this work, we design Intelligent Knowledge Store (IKS), a type-2 CXL device that implements a scale-out near-memory acceleration architecture with a novel cache-coherent interface between the host CPU and near-memory accelerators. IKS offers 13.4--27.9\texttimes{} faster exact nearest neighbor search over a 512GB vector database compared with executing the search on Intel Sapphire Rapids CPUs. This higher search performance translates to 1.7--26.3\texttimes{} lower end-to-end inference time for representative RAG applications. IKS is inherently a memory expander; its internal DRAM can be disaggregated and used for other applications running on the server to prevent DRAM -- which is the most expensive component in today's servers -- from being stranded.},
+    booktitle = {Proceedings of the 30th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 1},
+    pages = {15–32},
+    numpages = {18},
+    keywords = {database acceleration, dense retrieval, retrieval-augmented generation (rag)},
+    location = {Rotterdam, Netherlands},
+    series = {ASPLOS '25}
+}"
+                               data-filename="quinn2025accelerating.bib">
+                                <i class="fas fa-quote-right"></i>
+                            </a>
+                            <!-- *** End BibTeX Button *** -->
                         </div>
                     </div>
                 </div>
 
                 <!-- Publication 3 -->
 				<div class="publication-item">
-                     <div> <!-- Wrapper for text content -->
-                        <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank">XFM: Accelerated Software-Defined Far Memory</a> (MICRO 2023) <br>
-                        <p style="font-size: smaller;">Neel Patel, Amin Mamandipoor, <strong>Derrick Quinn</strong>, Mohammad Alian. </p>
-                    </div>
-                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
+                    <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
                         <i class="fas fa-chevron-down"></i>
                     </button>
+                     <div>
+                        <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank">XFM: Accelerated Software-Defined Far Memory</a> (MICRO 2023) <br>
+                        <p class="authors" style="font-size: smaller;">Neel Patel, Amin Mamandipoor, <strong>Derrick Quinn</strong>, Mohammad Alian. </p>
+                    </div>
                      <div class="publication-details">
-                        <p><strong>Abstract:</strong> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        <p><strong>Abstract:</strong>
+                            DRAM constitutes over 50% of server cost and 75% of the embodied carbon footprint of a server. To mitigate DRAM cost, far memory architectures have emerged. They can be separated into two broad categories: software-defined far memory (SFM) and disaggregated far memory (DFM). In this work, we compare the cost of SFM and DFM in terms of their required capital investment, operational expense, and carbon footprint. We show that, for applications whose data sets are compressible and have predictable memory access patterns, it takes several years for a DFM to break even with an equivalent capacity SFM in terms of cost and sustainability. We then introduce XFM, a near-memory accelerated SFM architecture, which exploits the coldness of data during SFM-initiated swap ins and outs. XFM leverages refresh cycles to seamlessly switch the access control of DRAM between the CPU and near-memory accelerator. XFM parallelizes near-memory accelerator accesses with row refreshes and removes the memory interference caused by SFM swap ins and outs. We modify an open source far memory implementation to implement a full-stack, user-level XFM. Our experimental results use a combination of an FPGA implementation, simulation, and analytical modeling to show that XFM eliminates memory bandwidth utilization when performing compression and decompression operations with SFMs of capacities up to 1TB. The memory and cache utilization reductions translate to 5 ∼ 27% improvement in the combined performance of co-running applications.
+                        </p>
                          <div class="publication-links">
                             <a href="#" title="PDF" class="unavailable"><i class="fas fa-file-pdf"></i></a>
                             <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank" title="Paper Link"><i class="fas fa-link"></i></a>
                             <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
+                            <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
+                             <!-- *** BibTeX Button Added Here *** -->
+                            <a href="#" title="BibTeX" class="bibtex-btn" data-bs-toggle="modal" data-bs-target="#bibtexModal"
+                               data-bibtex="@INPROCEEDINGS{patel_2023_xfm,
+    author={Patel, Neel and Mamandipoor, Amin and Quinn, Derrick and Alian, Mohammad},
+    booktitle={2023 56th IEEE/ACM International Symposium on Microarchitecture (MICRO)}, 
+    title={XFM: Accelerated Software-Defined Far Memory}, 
+    year={2023},
+    volume={},
+    number={},
+    pages={769-783},
+    keywords={Costs;Random access memory;Bandwidth;Switches;Servers;Field programmable gate arrays;Carbon footprint;Near-Memory Processing;Accelerator;Compression},
+    doi={}}                              
+}"
+                               data-filename="patel2023xfm.bib">
+                                <i class="fas fa-quote-right"></i>
+                            </a>
+                            <!-- *** End BibTeX Button *** -->
                         </div>
                     </div>
 				</div>
@@ -225,8 +292,34 @@
                     <p style="font-size: smaller;">*: Indicates equal contribution.</p>
                 </div>
             </section>
+            
         </article>
     </div>
+
+    <!-- *** BibTeX Modal Structure (Place Once, Outside the Loop/Repeated Sections) *** -->
+    <div class="modal fade" id="bibtexModal" tabindex="-1" aria-labelledby="bibtexModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bibtexModalLabel">BibTeX Entry</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <pre id="bibtexDisplay"><code></code></pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="copyBibtexBtn">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <button type="button" class="btn btn-primary" id="downloadBibtexBtn">
+                        <i class="fas fa-download"></i> Download .bib
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- *** End BibTeX Modal *** -->
+
 
     <footer class="mt-5">
         <div class="container">
@@ -237,8 +330,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
+        // Expand/Collapse Logic (Existing)
         document.addEventListener('DOMContentLoaded', function() {
-            const expandButtons = document.querySelectorAll('.expand-btn');
+            const expandButtons = document.querySelectorAll('.publication-item .expand-btn');
 
             expandButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -248,20 +342,81 @@
                     const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
                     if (isExpanded) {
-                        // Collapse
                         details.style.display = 'none';
                         this.setAttribute('aria-expanded', 'false');
                         icon.classList.remove('fa-chevron-up');
                         icon.classList.add('fa-chevron-down');
                     } else {
-                        // Expand
-                        details.style.display = 'block'; // Or 'flex', 'grid' depending on content
+                        details.style.display = 'block';
                         this.setAttribute('aria-expanded', 'true');
                         icon.classList.remove('fa-chevron-down');
                         icon.classList.add('fa-chevron-up');
                     }
                 });
             });
+
+            // *** BibTeX Modal Logic Added Here ***
+            const bibtexModal = document.getElementById('bibtexModal');
+            const bibtexDisplay = document.getElementById('bibtexDisplay');
+            const copyBibtexBtn = document.getElementById('copyBibtexBtn');
+            const downloadBibtexBtn = document.getElementById('downloadBibtexBtn');
+            let currentBibtex = ''; // To store the text for copy/download
+            let currentFilename = 'citation.bib'; // Default filename
+
+            // 1. Populate Modal when it's about to show
+            bibtexModal.addEventListener('show.bs.modal', function (event) {
+                // Button that triggered the modal
+                const button = event.relatedTarget;
+                // Extract bibtex data from data-* attributes
+                currentBibtex = button.getAttribute('data-bibtex');
+                currentFilename = button.getAttribute('data-filename') || 'citation.bib'; // Use provided filename or default
+
+                // Update the modal's content
+                bibtexDisplay.textContent = currentBibtex;
+
+                // Reset button states (in case they were changed, e.g., "Copied!")
+                copyBibtexBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                copyBibtexBtn.disabled = false;
+            });
+
+            // 2. Copy Button Logic
+            copyBibtexBtn.addEventListener('click', function() {
+                if (navigator.clipboard && currentBibtex) {
+                    navigator.clipboard.writeText(currentBibtex).then(() => {
+                        // Success feedback
+                        copyBibtexBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        copyBibtexBtn.disabled = true;
+                        setTimeout(() => {
+                            copyBibtexBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                            copyBibtexBtn.disabled = false;
+                        }, 2000); // Revert after 2 seconds
+                    }).catch(err => {
+                        console.error('Failed to copy BibTeX: ', err);
+                        alert('Failed to copy text.'); // Basic error feedback
+                    });
+                } else {
+                    // Fallback or error for older browsers / no data
+                     alert('Clipboard API not available or no BibTeX data.');
+                }
+            });
+
+            // 3. Download Button Logic
+            downloadBibtexBtn.addEventListener('click', function() {
+                if (currentBibtex) {
+                    const blob = new Blob([currentBibtex], { type: 'application/x-bibtex;charset=utf-8' }); // Use appropriate MIME type
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = currentFilename; // Use the dynamic filename
+                    document.body.appendChild(a); // Append temporarily to body
+                    a.click(); // Trigger download
+                    document.body.removeChild(a); // Clean up
+                    URL.revokeObjectURL(url); // Release object URL
+                } else {
+                    alert('No BibTeX data to download.');
+                }
+            });
+             // *** End BibTeX Modal Logic ***
         });
     </script>
 </body>
