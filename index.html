@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,37 +11,113 @@
     <style>
         .profile-img {
             width: 100%; /* Adjust image size as needed */
+            max-width: 150px; /* Added max-width for better control */
+            height: auto; /* Maintain aspect ratio */
             object-fit: cover; /* Maintain aspect ratio and crop if necessary */
         }
         .publication-item {
+            position: relative; /* Needed for absolute positioning of the button */
             margin-bottom: 15px; /* Add some space between publications */
-			padding-left: 15px;
+			padding: 10px 40px 0px 15px; /* Added padding top/bottom and right for button */
+            border-radius: 5px; /* Optional: slightly rounded corners */
+            transition: background-color 0.2s ease-in-out; /* Smooth background transition on hover */
         }
+        /* Add a subtle background on hover to indicate interactivity */
+        .publication-item:hover {
+            background-color: #f8f9fa; /* Light grey background */
+        }
+
+        .unavailable i.fas {
+        color: #aaaaaa; /* A medium grey color */
+        cursor: default;
+        /* Or use 'grey', '#999', 'darkgrey' etc. */
+        }
+
+        .expand-btn {
+            position: absolute;
+            top: 10px; /* Adjust vertical position */
+            right: 10px; /* Adjust horizontal position */
+            background: none;
+            border: none;
+            color: #6c757d; /* Bootstrap secondary color */
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+            opacity: 0; /* Hidden by default */
+            visibility: hidden; /* Hide completely */
+            transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s; /* Fade effect */
+        }
+
+        .publication-item:hover .expand-btn {
+            opacity: 1; /* Visible on hover */
+            visibility: visible;
+            transition-delay: 0s; /* Show immediately on hover */
+        }
+
+        .expand-btn:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+
+        .publication-details {
+            display: none; /* Hidden by default */
+            margin-top: 10px;
+            padding-left: 15px; /* Indent details */
+            border-left: 3px solid #dee2e6; /* Bootstrap border color */
+        }
+        .publication-details p { /* Style abstract */
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .publication-links a {
+            margin-right: 15px; /* Space out icons */
+            color: #0056b3;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+         .publication-links a:hover {
+             color: #007bff; /* Bootstrap primary color */
+         }
+
 
         .social-links {
             margin-top: 10px;
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Center icons below image */
             align-items: center;
         }
         .social-links a {
             color: #333;
             font-size: 1.5rem;
-            margin: 5px;
+            margin: 0 8px; /* Adjusted margin */
             text-decoration: none;
             transition: color 0.2s;
         }
         .social-links a:hover {
             color: #0056b3;
         }
+
+        /* Ensure publication text wraps correctly */
+        .publication-item > div:first-of-type {
+             margin-right: 20px; /* Space between text and potential button area */
+        }
+
+        /* Ensure the footnote doesn't get hover effects or button */
+        .publication-footnote {
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }
+         .publication-footnote:hover { /* Override hover effect */
+             background-color: transparent;
+         }
+
+
     </style>
 
-    
-    
-    
 
-    
-    
+
+
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQND47EQNE"></script>
@@ -59,8 +136,8 @@
                 <p class="lead">Ph.D. Student, Computer Systems Laboratory (CSL), Cornell University</p>
             </header>
 
-            <section class="profile row">
-                <div class="col-md-2">
+            <section class="profile row align-items-center"> <!-- Use align-items-center -->
+                <div class="col-md-2 text-center"> <!-- Added text-center -->
                     <img src="dquinn.jpeg" alt="Profile Picture of Derrick Quinn" class="profile-img rounded-circle mb-2">
                     <div class="social-links">
                         <a href="https://scholar.google.com/citations?user=6UxxJ1kAAAAJ&hl=en" target="_blank" title="Google Scholar">
@@ -72,29 +149,79 @@
                         <a href="https://www.linkedin.com/in/derrick-quinn" target="_blank" title="LinkedIn">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                    </div>    
-                </div>
-                <div class="col-md-8">
-                    <p>Derrick Quinn is a first-year Ph.D. student in the <a href="https://www.csl.cornell.edu/" target="_blank" rel="noopener noreferrer">Computer Systems Laboratory (CSL)</a> at the <a href="https://www.ece.cornell.edu/" target="_blank" rel="noopener noreferrer">School of Electrical and Computer Engineering</a>, <a href="https://www.cornell.edu" target="_blank" rel="noopener noreferrer">Cornell University</a>, where he is advised by <a href="https://alian.csl.cornell.edu/" target="_blank" rel="noopener noreferrer">Professor Mohammad Alian</a>. 
-                        His research interests are centered around algorithm-hardware co-design of distributed and heterogeneous computer systems. Currently, he focuses on semantic retrieval systems leveraging near-data processing techniques for improved efficiency. Derrick's goal is to develop generalized and scalable architectures for AI systems, promoting interoperability, adaptability, and sustainability across diverse computing environments.
                     </div>
+                </div>
+                <div class="col-md-10"> <!-- Changed to col-md-10 -->
+                    <p>Derrick Quinn is a first-year Ph.D. student in the <a href="https://www.csl.cornell.edu/" target="_blank" rel="noopener noreferrer">Computer Systems Laboratory (CSL)</a> at the <a href="https://www.ece.cornell.edu/" target="_blank" rel="noopener noreferrer">School of Electrical and Computer Engineering</a>, <a href="https://www.cornell.edu" target="_blank" rel="noopener noreferrer">Cornell University</a>, where he is advised by <a href="https://alian.csl.cornell.edu/" target="_blank" rel="noopener noreferrer">Professor Mohammad Alian</a>.
+                        His research interests are centered around algorithm-hardware co-design of distributed and heterogeneous computer systems. Currently, he focuses on semantic retrieval systems leveraging near-data processing techniques for improved efficiency. Derrick's goal is to develop generalized and scalable architectures for AI systems, promoting interoperability, adaptability, and sustainability across diverse computing environments.
+                    </p> <!-- Removed closing </div> here -->
+                </div> <!-- Added closing </div> here -->
             </section>
 
             <section class="mt-5">
                 <h2 id="publications">Publications</h2>
+
+                <!-- Publication 1 -->
                 <div class="publication-item">
-                    <a target="_blank">DReX: Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign</a> (Accepted at ISCA 2025) <br>
-                  <p style="font-size: smaller;"><strong>Derrick Quinn</strong>*, Emine Ezgi Yücel*, Martin Prammer, Zhenxing Fan, Kevin Skadron, Jignesh Patel, José Martínez, Mohammad Alian. </p>
+                     <div> <!-- Wrapper for text content -->
+                        <a target="_blank">DReX: Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign</a> (Accepted at ISCA 2025) <br>
+                        <p style="font-size: smaller;"><strong>Derrick Quinn</strong>*, Emine Ezgi Yücel*, Martin Prammer, Zhenxing Fan, Kevin Skadron, Jignesh Patel, José Martínez, Mohammad Alian. </p>
+                    </div>
+                    <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="publication-details">
+                        <p><strong>Abstract:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="publication-links">
+                            <a href="#" title="PDF" class="unavailable"><i class="fas fa-file-pdf"></i></a>
+                            <a href="#" title="Project Link" class="unavailable"><i class="fas fa-link"></i></a>
+                            <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
+                            <!-- Add more links as needed -->
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Publication 2 -->
                 <div class="publication-item">
-					<a href="https://dl.acm.org/doi/10.1145/3669940.3707264" target="_blank">Accelerating Retrieval-Augmented Generation</a> (ASPLOS 2025) <br>
-                  <p style="font-size: smaller;"><strong>Derrick Quinn</strong>, Mohammad Nouri, Neel Patel, John Salihu, Alireza Salemi, Sukhan Lee, Hamed Zamani, Mohammad Alian.  </p>
+                     <div> <!-- Wrapper for text content -->
+                        <a href="https://dl.acm.org/doi/10.1145/3669940.3707264" target="_blank">Accelerating Retrieval-Augmented Generation</a> (ASPLOS 2025) <br>
+                        <p style="font-size: smaller;"><strong>Derrick Quinn</strong>, Mohammad Nouri, Neel Patel, John Salihu, Alireza Salemi, Sukhan Lee, Hamed Zamani, Mohammad Alian.  </p>
+                    </div>
+                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                     <div class="publication-details">
+                        <p><strong>Abstract:</strong> An evolving solution to address hallucination and enhance accuracy in large language models (LLMs) is Retrieval-Augmented Generation (RAG), which involves augmenting LLMs with information retrieved from an external knowledge source, such as the web. This paper profiles several RAG execution pipelines and demystifies the complex interplay between their retrieval and generation phases. We demonstrate that while exact retrieval schemes are expensive, they can reduce inference time compared to approximate retrieval variants because an exact retrieval model can send a smaller but more accurate list of documents to the generative model while maintaining the same end-to-end accuracy. This observation motivates the acceleration of the exact nearest neighbor search for RAG.
+                            <br><br>In this work, we design Intelligent Knowledge Store (IKS), a type-2 CXL device that implements a scale-out near-memory acceleration architecture with a novel cache-coherent interface between the host CPU and near-memory accelerators. IKS offers 13.4–27.9× faster exact nearest neighbor search over a 512GB vector database compared with executing the search on Intel Sapphire Rapids CPUs. This higher search performance translates to 1.7–26.3× lower end-to-end inference time for representative RAG applications. IKS is inherently a memory expander; its internal DRAM can be disaggregated and used for other applications running on the server to prevent DRAM–which is the most expensive component in today's servers–from being stranded.</p>
+                        <div class="publication-links">
+                            <a href="https://arxiv.org/pdf/2412.15246" target="_blank" title="Paper Link"><i class="fas fa-file-pdf"></i></a>
+                            <a href="https://dl.acm.org/doi/10.1145/3669940.3707264" target="_blank" title="Paper Link"><i class="fas fa-link"></i></a>
+                            <a href="https://github.com/architecture-research-group/ae-asplos25-iks.git" title="Code"><i class="fas fa-code"></i></a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Publication 3 -->
 				<div class="publication-item">
-					<a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank">XFM: Accelerated Software-Defined Far Memory</a> (MICRO 2023) <br>
-                  <p style="font-size: smaller;">Neel Patel, Amin Mamandipoor, <strong>Derrick Quinn</strong>, Mohammad Alian. </p>
-                </div>
-                <div class="publication-item">
+                     <div> <!-- Wrapper for text content -->
+                        <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank">XFM: Accelerated Software-Defined Far Memory</a> (MICRO 2023) <br>
+                        <p style="font-size: smaller;">Neel Patel, Amin Mamandipoor, <strong>Derrick Quinn</strong>, Mohammad Alian. </p>
+                    </div>
+                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                     <div class="publication-details">
+                        <p><strong>Abstract:</strong> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                         <div class="publication-links">
+                            <a href="#" title="PDF" class="unavailable"><i class="fas fa-file-pdf"></i></a>
+                            <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank" title="Paper Link"><i class="fas fa-link"></i></a>
+                            <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
+                        </div>
+                    </div>
+				</div>
+
+                <!-- Footnote - Exclude from expand/collapse -->
+                <div class="publication-footnote">
                     <p style="font-size: smaller;">*: Indicates equal contribution.</p>
                 </div>
             </section>
@@ -103,10 +230,39 @@
 
     <footer class="mt-5">
         <div class="container">
-            <p class="text-center">&copy; Copyright 2024 Derrick Quinn. All rights reserved.</p>
+            <p class="text-center">© Copyright 2024 Derrick Quinn. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const expandButtons = document.querySelectorAll('.expand-btn');
+
+            expandButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const publicationItem = this.closest('.publication-item');
+                    const details = publicationItem.querySelector('.publication-details');
+                    const icon = this.querySelector('i');
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                    if (isExpanded) {
+                        // Collapse
+                        details.style.display = 'none';
+                        this.setAttribute('aria-expanded', 'false');
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        // Expand
+                        details.style.display = 'block'; // Or 'flex', 'grid' depending on content
+                        this.setAttribute('aria-expanded', 'true');
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
