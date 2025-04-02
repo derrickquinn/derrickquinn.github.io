@@ -140,6 +140,115 @@
          }
 
     </style>
+
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Derrick Quinn",
+        "url": "https://derrickquinn.github.io",
+        "image": "https://derrickquinn.github.io/dquinn.jpeg",
+        "jobTitle": "Ph.D. Student",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Kansas"
+        },
+        "worksFor": {
+          "@type": "CollegeOrUniversity",
+          "name": "Cornell University",
+          "url": "https://www.cornell.edu/"
+        },
+        "sameAs": [ // Links to your profiles
+          "https://scholar.google.com/citations?user=6UxxJ1kAAAAJ&hl=en",
+          "https://github.com/derrickquinn",
+          "https://www.linkedin.com/in/derrick-quinn"
+        ],
+        "description": "Ph.D. student at Cornell University focusing on algorithm-hardware co-design for distributed and heterogeneous computer systems, particularly semantic retrieval and AI architectures.",
+        "knowsAbout": ["Computer Systems", "Hardware Acceleration", "Near-Data Processing", "Distributed Systems", "Semantic Retrieval", "Retrieval-Augmented Generation", "AI Systems Architecture"] // List key research areas/keywords
+      },
+    
+      {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "headline": "Accelerating Retrieval-Augmented Generation",
+        "author": [
+            {"@type": "Person", "name": "Derrick Quinn"},
+            {"@type": "Person", "name": "Mohammad Nouri"},
+            {"@type": "Person", "name": "Neel Patel"},
+            {"@type": "Person", "name": "John Salihu"},
+            {"@type": "Person", "name": "Alireza Salemi"},
+            {"@type": "Person", "name": "Sukhan Lee"},
+            {"@type": "Person", "name": "Hamed Zamani"},
+            {"@type": "Person", "name": "Mohammad Alian"}
+        ],
+        "datePublished": "2025",
+        "isPartOf": {
+            "@type": "PublicationIssue",
+            "name": "Proceedings of the 30th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 1",
+            "issueNumber": "ASPLOS '25"
+        },
+        "url": "https://dl.acm.org/doi/10.1145/3669940.3707264", // Primary URL
+        "sameAs": [ // Other relevant links
+            "https://doi.org/10.1145/3669940.3707264",
+            "https://arxiv.org/abs/2412.15246"
+        ],
+        "abstract": "An evolving solution to address hallucination and enhance accuracy in large language models (LLMs) is Retrieval-Augmented Generation (RAG), which involves augmenting LLMs with information retrieved from an external knowledge source, such as the web. This paper profiles several RAG execution pipelines and demystifies the complex interplay between their retrieval and generation phases. We demonstrate that while exact retrieval schemes are expensive, they can reduce inference time compared to approximate retrieval variants because an exact retrieval model can send a smaller but more accurate list of documents to the generative model while maintaining the same end-to-end accuracy. This observation motivates the acceleration of the exact nearest neighbor search for RAG.In this work, we design Intelligent Knowledge Store (IKS), a type-2 CXL device that implements a scale-out near-memory acceleration architecture with a novel cache-coherent interface between the host CPU and near-memory accelerators. IKS offers 13.4--27.9\texttimes{} faster exact nearest neighbor search over a 512GB vector database compared with executing the search on Intel Sapphire Rapids CPUs. This higher search performance translates to 1.7--26.3\texttimes{} lower end-to-end inference time for representative RAG applications. IKS is inherently a memory expander; its internal DRAM can be disaggregated and used for other applications running on the server to prevent DRAM -- which is the most expensive component in today's servers -- from being stranded.",
+        "citation": "@inproceedings{quinn_2025_rag,
+            author = {Quinn, Derrick and Nouri, Mohammad and Patel, Neel and Salihu, John and Salemi, Alireza and Lee, Sukhan and Zamani, Hamed and Alian, Mohammad},
+            title = {Accelerating Retrieval-Augmented Generation},
+            year = {2025},
+            isbn = {9798400706981},
+            publisher = {Association for Computing Machinery},
+            address = {New York, NY, USA},
+            url = {https://doi.org/10.1145/3669940.3707264},
+            doi = {10.1145/3669940.3707264},
+            abstract = {An evolving solution to address hallucination and enhance accuracy in large language models (LLMs) is Retrieval-Augmented Generation (RAG), which involves augmenting LLMs with information retrieved from an external knowledge source, such as the web. This paper profiles several RAG execution pipelines and demystifies the complex interplay between their retrieval and generation phases. We demonstrate that while exact retrieval schemes are expensive, they can reduce inference time compared to approximate retrieval variants because an exact retrieval model can send a smaller but more accurate list of documents to the generative model while maintaining the same end-to-end accuracy. This observation motivates the acceleration of the exact nearest neighbor search for RAG.In this work, we design Intelligent Knowledge Store (IKS), a type-2 CXL device that implements a scale-out near-memory acceleration architecture with a novel cache-coherent interface between the host CPU and near-memory accelerators. IKS offers 13.4--27.9\texttimes{} faster exact nearest neighbor search over a 512GB vector database compared with executing the search on Intel Sapphire Rapids CPUs. This higher search performance translates to 1.7--26.3\texttimes{} lower end-to-end inference time for representative RAG applications. IKS is inherently a memory expander; its internal DRAM can be disaggregated and used for other applications running on the server to prevent DRAM -- which is the most expensive component in today's servers -- from being stranded.},
+            booktitle = {Proceedings of the 30th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 1},
+            pages = {15–32},
+            numpages = {18},
+            keywords = {database acceleration, dense retrieval, retrieval-augmented generation (rag)},
+            location = {Rotterdam, Netherlands},
+            series = {ASPLOS '25}
+        }",
+        "keywords": ["database acceleration", "dense retrieval", "retrieval-augmented generation (rag)", "near-memory processing", "CXL"]
+      },
+    
+      {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "headline": "XFM: Accelerated Software-Defined Far Memory",
+         "author": [
+            {"@type": "Person", "name": "Neel Patel"},
+            {"@type": "Person", "name": "Amin Mamandipoor"},
+            {"@type": "Person", "name": "Derrick Quinn"},
+            {"@type": "Person", "name": "Mohammad Alian"}
+        ],
+        "datePublished": "2023",
+         "isPartOf": {
+            "@type": "PublicationIssue",
+            "name": "Proceedings of the 56th IEEE/ACM International Symposium on Microarchitecture",
+            "issueNumber": "MICRO '23"
+        },
+        "url": "https://dl.acm.org/doi/10.1145/3613424.3623776",
+         "sameAs": [
+            "https://doi.org/10.1145/3613424.3623776"
+        ],
+         "abstract": "DRAM constitutes over 50% of server cost and 75% of the embodied carbon footprint of a server. To mitigate DRAM cost, far memory architectures have emerged. They can be separated into two broad categories: software-defined far memory (SFM) and disaggregated far memory (DFM). In this work, we compare the cost of SFM and DFM in terms of their required capital investment, operational expense, and carbon footprint. We show that, for applications whose data sets are compressible and have predictable memory access patterns, it takes several years for a DFM to break even with an equivalent capacity SFM in terms of cost and sustainability. We then introduce XFM, a near-memory accelerated SFM architecture, which exploits the coldness of data during SFM-initiated swap ins and outs. XFM leverages refresh cycles to seamlessly switch the access control of DRAM between the CPU and near-memory accelerator. XFM parallelizes near-memory accelerator accesses with row refreshes and removes the memory interference caused by SFM swap ins and outs. We modify an open source far memory implementation to implement a full-stack, user-level XFM. Our experimental results use a combination of an FPGA implementation, simulation, and analytical modeling to show that XFM eliminates memory bandwidth utilization when performing compression and decompression operations with SFMs of capacities up to 1TB. The memory and cache utilization reductions translate to 5∼27% improvement in the combined performance of co-running applications.",
+         "citation": "@INPROCEEDINGS{patel_2023_xfm,
+            author={Patel, Neel and Mamandipoor, Amin and Quinn, Derrick and Alian, Mohammad},
+            booktitle={2023 56th IEEE/ACM International Symposium on Microarchitecture (MICRO)}, 
+            title={XFM: Accelerated Software-Defined Far Memory}, 
+            year={2023},
+            volume={},
+            number={},
+            pages={769-783},
+            keywords={Costs;Random access memory;Bandwidth;Switches;Servers;Field programmable gate arrays;Carbon footprint;Near-Memory Processing;Accelerator;Compression},
+            doi={}}",
+         "keywords": ["Near-Memory Processing", "Accelerator", "Compression", "Far Memory", "Software-Defined Memory"]
+      }
+    ]
+    </script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQND47EQNE"></script>
