@@ -268,7 +268,15 @@
 
             <section class="profile row"> <!-- Use align-items-center -->
                 <div class="col-md-2"> <!-- Added text-center -->
-                    <img src="dquinn.jpeg" alt="Profile Picture of Derrick Quinn" class="profile-img rounded-circle mb-2">
+                    <picture>
+                        <source srcset="dquinn.webp" type="image/webp">
+                        <!-- If not supported. -->
+                        <source srcset="dquinn.jpeg" type="image/jpeg">
+                      
+                        <!-- Final fallback: the standard img tag is required -->
+                        <img src="dquinn.jpeg" alt="Profile Picture of Derrick Quinn" class="profile-img rounded-circle mb-2">
+
+                      </picture>
                     <div class="social-links">
                         <a href="https://scholar.google.com/citations?user=6UxxJ1kAAAAJ&hl=en" target="_blank" title="Google Scholar">
                             <i class="fas fa-graduation-cap"></i>
