@@ -278,13 +278,13 @@
 
                       </picture>
                     <div class="social-links">
-                        <a href="https://scholar.google.com/citations?user=6UxxJ1kAAAAJ&hl=en" target="_blank" title="Google Scholar">
+                        <a href="https://scholar.google.com/citations?user=6UxxJ1kAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar">
                             <i class="fas fa-graduation-cap"></i>
                         </a>
-                        <a href="https://github.com/derrickquinn" target="_blank" title="GitHub">
+                        <a href="https://github.com/derrickquinn" target="_blank" rel="noopener noreferrer" title="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/derrick-quinn" target="_blank" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/derrick-quinn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
@@ -299,13 +299,13 @@
             <section class="mt-5">
                 <h2 id="publications">Publications</h2>
 
-                <!-- Publication 1 -->
+
                 <div class="publication-item">
                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                      <div> <!-- Wrapper for text content -->
-                        <a target="_blank">DReX: Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign</a> (Accepted at ISCA 2025) <br>
+                        <a target="_blank" rel="noopener noreferrer">[ISCA '25] Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign</a><br>
                         <p class="authors" style="font-size: smaller;"><strong>Derrick Quinn</strong>*, E. Ezgi Yücel*, Martin Prammer, Zhenxing Fan, Kevin Skadron, Jignesh Patel, José Martínez, Mohammad Alian. </p>
                     </div>
                     <div class="publication-details">
@@ -331,17 +331,17 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                      <div> <!-- Wrapper for text content -->
-                        <a href="https://dl.acm.org/doi/10.1145/3669940.3707264" target="_blank">Accelerating Retrieval-Augmented Generation</a> (ASPLOS 2025) <br>
+                        <a target="_blank" rel="noopener noreferrer">[ASPLOS '25] Accelerating Retrieval-Augmented Generation</a><br>
                         <p class="authors" style="font-size: smaller;"><strong>Derrick Quinn</strong>, Mohammad Nouri, Neel Patel, John Salihu, Alireza Salemi, Sukhan Lee, Hamed Zamani, Mohammad Alian.  </p>
                     </div>
                      <div class="publication-details">
                         <p><strong>Abstract:</strong> An evolving solution to address hallucination and enhance accuracy in large language models (LLMs) is Retrieval-Augmented Generation (RAG), which involves augmenting LLMs with information retrieved from an external knowledge source, such as the web. This paper profiles several RAG execution pipelines and demystifies the complex interplay between their retrieval and generation phases. We demonstrate that while exact retrieval schemes are expensive, they can reduce inference time compared to approximate retrieval variants because an exact retrieval model can send a smaller but more accurate list of documents to the generative model while maintaining the same end-to-end accuracy. This observation motivates the acceleration of the exact nearest neighbor search for RAG.
                             <br><br>In this work, we design Intelligent Knowledge Store (IKS), a type-2 CXL device that implements a scale-out near-memory acceleration architecture with a novel cache-coherent interface between the host CPU and near-memory accelerators. IKS offers 13.4–27.9× faster exact nearest neighbor search over a 512GB vector database compared with executing the search on Intel Sapphire Rapids CPUs. This higher search performance translates to 1.7–26.3× lower end-to-end inference time for representative RAG applications. IKS is inherently a memory expander; its internal DRAM can be disaggregated and used for other applications running on the server to prevent DRAM–which is the most expensive component in today's servers–from being stranded.</p>
                         <div class="publication-links">
-                            <a href="https://arxiv.org/pdf/2412.15246" target="_blank" title="Paper Link"><i class="fas fa-file-pdf"></i></a>
-                            <a href="https://dl.acm.org/doi/10.1145/3669940.3707264"  target="_blank" title="Paper Link"><i class="fas fa-link"></i></a>
-                            <a href="https://github.com/architecture-research-group/ae-asplos25-iks.git" target="_blank" title="Code"><i class="fas fa-code"></i></a>
-                            <a href="ASPLOS_IKS.pdf" target="_blank" title="Slides"><i class="fas fa-file-powerpoint"></i></a>
+                            <a href="https://arxiv.org/pdf/2412.15246" target="_blank" rel="noopener noreferrer" title="Paper Link"><i class="fas fa-file-pdf"></i></a>
+                            <a href="https://dl.acm.org/doi/10.1145/3669940.3707264"  target="_blank" rel="noopener noreferrer" title="Paper Link"><i class="fas fa-link"></i></a>
+                            <a href="https://github.com/architecture-research-group/ae-asplos25-iks.git" target="_blank" rel="noopener noreferrer" title="Code"><i class="fas fa-code"></i></a>
+                            <a href="ASPLOS_IKS.pdf" target="_blank" rel="noopener noreferrer" title="Slides"><i class="fas fa-file-powerpoint"></i></a>
                              <!-- *** BibTeX Button Added Here *** -->
                             <a href="#" title="BibTeX" class="bibtex-btn" data-bs-toggle="modal" data-bs-target="#bibtexModal"
                                data-bibtex="@inproceedings{quinn_2025_rag,
@@ -375,7 +375,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                      <div>
-                        <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank">XFM: Accelerated Software-Defined Far Memory</a> (MICRO 2023) <br>
+                        <a target="_blank" rel="noopener noreferrer">[MICRO '23] XFM: Accelerated Software-Defined Far Memory</a><br>
                         <p class="authors" style="font-size: smaller;">Neel Patel, Amin Mamandipoor, <strong>Derrick Quinn</strong>, Mohammad Alian. </p>
                     </div>
                      <div class="publication-details">
@@ -384,21 +384,21 @@
                         </p>
                          <div class="publication-links">
                             <a href="#" title="PDF" class="unavailable"><i class="fas fa-file-pdf"></i></a>
-                            <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank" title="Paper Link"><i class="fas fa-link"></i></a>
+                            <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank" rel="noopener noreferrer" title="Paper Link"><i class="fas fa-link"></i></a>
                             <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
                             <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
                              <!-- *** BibTeX Button Added Here *** -->
                             <a href="#" title="BibTeX" class="bibtex-btn" data-bs-toggle="modal" data-bs-target="#bibtexModal"
                                data-bibtex="@INPROCEEDINGS{patel_2023_xfm,
-    author={Patel, Neel and Mamandipoor, Amin and Quinn, Derrick and Alian, Mohammad},
-    booktitle={2023 56th IEEE/ACM International Symposium on Microarchitecture (MICRO)}, 
-    title={XFM: Accelerated Software-Defined Far Memory}, 
-    year={2023},
-    volume={},
-    number={},
-    pages={769-783},
-    keywords={Costs;Random access memory;Bandwidth;Switches;Servers;Field programmable gate arrays;Carbon footprint;Near-Memory Processing;Accelerator;Compression},
-    doi={}}                              
+author={Patel, Neel and Mamandipoor, Amin and Quinn, Derrick and Alian, Mohammad},
+booktitle={2023 56th IEEE/ACM International Symposium on Microarchitecture (MICRO)}, 
+title={XFM: Accelerated Software-Defined Far Memory}, 
+year={2023},
+volume={},
+number={},
+pages={769-783},
+keywords={Costs;Random access memory;Bandwidth;Switches;Servers;Field programmable gate arrays;Carbon footprint;Near-Memory Processing;Accelerator;Compression},
+doi={}
 }"
                                data-filename="patel2023xfm.bib">
                                 <i class="fas fa-quote-right"></i>
@@ -537,7 +537,6 @@
                     alert('No BibTeX data to download.');
                 }
             });
-             // *** End BibTeX Modal Logic ***
         });
     </script>
 </body>
