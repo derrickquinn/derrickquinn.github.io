@@ -18,10 +18,15 @@
             height: auto; /* Maintain aspect ratio */
             object-fit: cover; /* Maintain aspect ratio and crop if necessary */
         }
+        .news-item {
+            display: flex;
+            align-items: center; /* Align items to the top */
+            padding: 0px 25px 0px 2rem; /* Symmetrical horizontal padding */
+        }
         .publication-item {
             display: flex;
             align-items: center; /* Align items to the top */
-            padding: 5px 15px 5px 15px; /* Symmetrical horizontal padding */
+            padding: 5px 15px 5px 0.5rem; /* Symmetrical horizontal padding */
             border-radius: 5px;
 
             transition: background-color 0.2s ease-in-out;
@@ -39,7 +44,7 @@
             cursor: pointer;
             padding: 0; /* Adjust padding if needed */
             line-height: 1.5; /* Match text line height roughly */
-            margin-right: 10px; /* Add space between button and text */
+            margin-right: 0.5rem; /* Add space between button and text */
             flex-shrink: 0; /* Prevent button from shrinking */
             /* Keep visibility/transition */
             opacity: 0;
@@ -265,7 +270,7 @@
 <body>
     <div class="container h-100 col-12 d-flex justify-content-center align-items-center">
 
-    <div class="container mt-5 col-12" style="width: 90%;">
+    <div class="container mt-3 col-12" style="width: 90%;">
         <article class="post">
 
 
@@ -322,8 +327,17 @@
                 </div>
             </section>
 
-            <section class="mt-5 col-12">
-                <h2 id="publications">Publications</h2>
+            <!-- <section class="col-12">
+                <h4 id="news">News</h4>
+                <div class="news-item">[April 2025] Presented Accelerating RAG at ASPLOS</div>
+                <div class="news-item">[March 2025] DReX accepted at ISCA</div>
+                <div class="news-item">[October 2024] Accelerating RAG accepted at ASPLOS</div>
+                <div class="news-item">[August 2024] Started Ph.D. at Cornell</div>
+                <div class="news-item">[June 2023] Participated in uarch at ISCA 2023</div>
+            </section> -->
+
+            <section class="mt-1 col-12">
+                <h4 id="publications">Publications</h4>
 
                 <div class="publication-item">
                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
@@ -351,7 +365,7 @@
 
                 <!-- Publication 2 -->
                  
-                <div class="publication-item">
+                <div class="publication-item" name="rag" id="rag">
                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
                         <i class="fas fa-chevron-down"></i>
                     </button>
