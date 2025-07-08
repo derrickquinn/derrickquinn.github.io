@@ -349,18 +349,37 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                      <div> <!-- Wrapper for text content -->
-                        [ISCA '25] <a target="_blank" rel="noopener noreferrer">DReX: Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign</a><br>
+                        [ISCA '25] <a href="https://dl.acm.org/doi/full/10.1145/3695053.3731079" target="_blank" rel="noopener noreferrer">DReX: Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign</a><br>
                         <p class="authors" style="font-size: smaller;"><strong>Derrick Quinn</strong>*, E. Ezgi Yücel*, Martin Prammer, Zhenxing Fan, Kevin Skadron, Jignesh Patel, José Martínez, Mohammad Alian. </p>
                     </div>
                     <div class="publication-details">
-                        <p><strong>Abstract:</strong> Coming soon!</p>
+                        <p><strong>Abstract:</strong> Retrieval-augmented generation (RAG) supplements large language models (LLM) with information retrieval to ensure up-to-date, accurate, factually grounded, and contextually relevant outputs. RAG implementations often employ dense retrieval methods and approximate k-nearest neighbor search (ANNS). Unfortunately, ANNS is inherently dataset-specific and prone to low recall, potentially leading to inaccuracies when irrelevant or incomplete context is passed to the LLM. Furthermore, sending numerous imprecise documents to the LLM for generation can significantly degrade performance compared to processing a smaller set of accurate documents.
+                            
+                            We propose <strong>DReX</strong>, a dataset-agnostic, accurate, and scalable <strong>D</strong>ense <strong>R</strong>etrieval <strong>Acc</strong>eleration scheme enabled through a novel algorithmic-hardware co-design. We leverage in-DRAM logic to enable early filtering of embedding vectors far from the query vector. An outside-DRAM near-memory accelerator then performs exact nearest neighbor searches on the remaining filtered embeddings. This resulting design minimizes off-chip data movement and ensures precise and efficient retrieval, laying the foundation for robust and performant RAG systems that are broadly applicable. Our evaluation shows that DReX delivers a 6.2-7× reduction in time-to-first-token for a representative RAG application over a state-of-the-art mechanism while incurring reasonable area and power overheads in the memory subsystem.</p>
                         <div class="publication-links">
-                            <a href="#" title="PDF" class="unavailable"><i class="fas fa-file-pdf"></i></a>
+                            <a href="drex.pdf" target="_blank" rel="noopener noreferrer" title="PDF"><i class="fas fa-file-pdf"></i></a>
                             <a href="#" title="Project Link" class="unavailable"><i class="fas fa-link"></i></a>
                             <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
                             <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
                             <!-- *** BibTeX Button Added Here *** -->
-                            <a href="#" title="BibTeX" class="bibtex-btn unavailable">
+                            <a href="#" title="BibTeX" class="bibtex-btn" data-bs-toggle="modal" data-bs-target="#bibtexModal"
+                               data-bibtex="@inproceedings{quinn_2025_drex,
+    author = {Quinn, Derrick and Y\&quot;{u}cel, E. Ezgi and Prammer, Martin and Fan, Zhenxing and Skadron, Kevin and Patel, Jignesh M. and Mart\'{\i}nez, Jos\'{e} F. and Alian, Mohammad},
+    title = {DReX: Accurate and Scalable Dense Retrieval Acceleration via Algorithmic-Hardware Codesign},
+    year = {2025},
+    isbn = {9798400712616},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3695053.3731079},
+    doi = {10.1145/3695053.3731079},
+    abstract = {Retrieval-augmented generation (RAG) supplements large language models (LLM) with information retrieval to ensure up-to-date, accurate, factually grounded, and contextually relevant outputs. RAG implementations often employ dense retrieval methods and approximate k-nearest neighbor search (ANNS). Unfortunately, ANNS is inherently dataset-specific and prone to low recall, potentially leading to inaccuracies when irrelevant or incomplete context is passed to the LLM. Furthermore, sending numerous imprecise documents to the LLM for generation can significantly degrade performance compared to processing a smaller set of accurate documents.We propose DReX, a dataset-agnostic, accurate, and scalable Dense Retrieval Acceleration scheme enabled through a novel algorithmic-hardware co-design. We leverage in-DRAM logic to enable early filtering of embedding vectors far from the query vector. An outside-DRAM near-memory accelerator then performs exact nearest neighbor searches on the remaining filtered embeddings. This resulting design minimizes off-chip data movement and ensures precise and efficient retrieval, laying the foundation for robust and performant RAG systems that are broadly applicable. Our evaluation shows that DReX delivers a 6.2-7 \texttimes{} reduction in time-to-first-token for a representative RAG application over a state-of-the-art mechanism while incurring reasonable area and power overheads in the memory subsystem.},
+    booktitle = {Proceedings of the 52nd Annual International Symposium on Computer Architecture},
+    pages = {1108–1124},
+    numpages = {17},
+    location = {Tokyo, Japan},
+    series = {ISCA '25}
+}"
+                               data-filename="quinn2025drex.bib">
                                 <i class="fas fa-quote-right"></i>
                             </a>
                             <!-- *** End BibTeX Button *** -->
@@ -368,7 +387,40 @@
                     </div>
                 </div>
 
-                <!-- Publication 2 -->
+                <div class="publication-item">
+                    <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                     <div> <!-- Wrapper for text content -->
+                        [IEEE Micro] <a href="https://ieeexplore.ieee.org/abstract/document/11022767" target="_blank" rel="noopener noreferrer">Compute-Enabled CXL Memory Expansion for Efficient Retrieval Augmented Generation</a><br>
+                        <p class="authors" style="font-size: smaller;"><strong>Derrick Quinn</strong>, Neel Patel, Mohammad Alian. </p>
+                    </div>
+                    <div class="publication-details">
+                        <p><strong>Abstract:</strong> Conventional near-memory processing architectures often strike a trade-off between memory capacity and memory bandwidth, leading to high initial data movement or high capital costs due to memory stranding. In this work, we introduce compute-enabled memory expansion enabled by CXL as a solution for the widespread adoption of near-memory processing at scale. We present the Intelligent Knowledge Store (IKS), which is fundamentally a memory expander with lightweight near-memory accelerators that leverage high internal memory bandwidth to accelerate dense retrieval, a key component of retrieval-augmented generation (RAG). IKS disaggregates its internal memory capacity and supports both spatial and temporal multi-tenancy. It significantly accelerates high-quality dense retrieval while enabling multi-tenancy with modest memory access interference.</p>
+                        <div class="publication-links">
+                            <a href="cxl.pdf" target="_blank" rel="noopener noreferrer" title="PDF"><i class="fas fa-file-pdf"></i></a>
+                            <a href="#" title="Project Link" class="unavailable"><i class="fas fa-link"></i></a>
+                            <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
+                            <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
+                            <!-- *** BibTeX Button Added Here *** -->
+                            <a href="#" title="BibTeX" class="bibtex-btn" data-bs-toggle="modal" data-bs-target="#bibtexModal"
+                               data-bibtex="@ARTICLE{quinn_2025_cxl,
+    author={Quinn, Derrick and Patel, Neel and Alian, Mohammad},
+    journal={IEEE Micro}, 
+    title={Compute-Enabled CXL Memory Expansion for Efficient Retrieval Augmented Generation}, 
+    year={2025},
+    volume={},
+    number={},
+    pages={1-8},
+    keywords={Vectors;Retrieval augmented generation;Bandwidth;Memory management;Random access memory;Costs;Translation;Hardware;Protocols;Finance},
+    doi={10.1109/MM.2025.3575280}
+}" data-filename="quinn2025cxl.bib">
+                                <i class="fas fa-quote-right"></i>
+                            </a>
+                            <!-- *** End BibTeX Button *** -->
+                        </div>
+                    </div>
+                </div>
                  
                 <div class="publication-item" name="rag" id="rag">
                     <button class="expand-btn" aria-expanded="false" aria-label="Toggle publication details">
@@ -405,7 +457,7 @@
     location = {Rotterdam, Netherlands},
     series = {ASPLOS '25}
 }"
-                               data-filename="quinn2025accelerating.bib">
+                               data-filename="quinn2025rag.bib">
                                 <i class="fas fa-quote-right"></i>
                             </a>
                             <!-- *** End BibTeX Button *** -->
