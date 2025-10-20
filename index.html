@@ -347,20 +347,36 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                      <div> <!-- Wrapper for text content -->
-                        [MICRO '25] <a href="LongSight.pdf" target="_blank" rel="noopener noreferrer">LongSight: Compute-Enabled Memory to Accelerate Large-Context LLMs via Sparse Attention</a><br>
+                        [MICRO '25] <a href="https://dl.acm.org/doi/10.1145/3725843.3756062" target="_blank" rel="noopener noreferrer">LongSight: Compute-Enabled Memory to Accelerate Large-Context LLMs via Sparse Attention</a><br>
                         <p class="authors" style="font-size: smaller;"><strong>Derrick Quinn</strong>, E. Ezgi Yücel, Jinkwon Kim, José F. Martínez, Mohammad Alian. </p>
                     </div>
                     <div class="publication-details">
                         <p><strong>Abstract:</strong>Large input context windows in transformer-based LLMs help minimize hallucinations and improve output accuracy and personalization. However, as the context window grows, the attention phase increasingly dominates execution time. Key–Value (KV) caching alleviates part of this cost by avoiding redundant computation, but the KV cache itself can quickly exceed the capacity of today’s GPU high-bandwidth memory (HBM). In this work, we present LongSight, an algorithm–hardware co-design framework for accelerating attention in large-context scenarios. LongSight leverages a compute-enabled CXL memory device, originally designed for dense retrieval acceleration, to offload KV cache storage and retrieval. Therefore, LongSight effectively elevates the value of relatively low-cost LPDDR DRAM to that of high-end HBM. We demonstrate that, with just a single GPU and a single compute-enabled CXL memory expander, LongSight can efficiently support context lengths of up to 1 million tokens for state-of-the-art Llama models.</p>
                         <div class="publication-links">
                             <a href="LongSight.pdf" target="_blank" rel="noopener noreferrer" title="PDF"><i class="fas fa-file-pdf"></i></a>
-                            <a href="#" title="Project Link" class="unavailable"><i class="fas fa-link"></i></a>
-                            <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
-                            <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
-                            <a href="#" title="BibTeX" class="unavailable" data-bs-toggle="modal" data-bs-target="#bibtexModal">
+                            <a href="https://github.com/architecture-research-group/ae-micro-scf-attn/tree/main/src" target="_blank" rel="noopener noreferrer" title="Code"><i class="fas fa-code"></i></a>
+							<a href="longsight_presentation.pdf" target="_blank" rel="noopener noreferrer" title="Slides"><i class="fas fa-file-powerpoint"></i></a>
+                            <a href="#" title="BibTeX" class="bibtex-btn" data-bs-toggle="modal" data-bs-target="#bibtexModal"
+                               data-bibtex="@inproceedings{quinn_2025_longsight,
+    author = {Quinn, Derrick and Y\&quot;{u}cel, E. Ezgi and Kim, Jinkwon and Mart\'{\i}nez, Jos\'{e} F. and Alian, Mohammad},
+    title = {LongSight: Compute-Enabled Memory to Accelerate Large-Context LLMs via Sparse Attention},
+    year = {2025},
+    isbn = {9798400715730},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3725843.3756062},
+    doi = {10.1145/3725843.3756062},
+    abstract = {Large input context windows in transformer-based LLMs help minimize hallucinations and improve output accuracy and personalization. However, as the context window grows, the attention phase increasingly dominates execution time. Key–Value (KV) caching alleviates part of this cost by avoiding redundant computation, but the KV cache itself can quickly exceed the capacity of today’s GPU high-bandwidth memory (HBM). In this work, we present LongSight, an algorithm–hardware co-design framework for accelerating attention in large-context scenarios. LongSight leverages a compute-enabled CXL memory device, originally designed for dense retrieval acceleration, to offload KV cache storage and retrieval. Therefore, LongSight effectively elevates the value of relatively low-cost LPDDR DRAM to that of high-end HBM. We demonstrate that, with just a single GPU and a single compute-enabled CXL memory expander, LongSight can efficiently support context lengths of up to 1 million tokens for state-of-the-art Llama models.},
+    booktitle = {Proceedings of the 58th IEEE/ACM International Symposium on Microarchitecture®},
+    pages = {34–48},
+    numpages = {15},
+    location = {
+    },
+    series = {MICRO '25}
+}"
+                               data-filename="quinn2025drex.bib">
                                 <i class="fas fa-quote-right"></i>
                             </a>
-                            <!-- *** End BibTeX Button *** -->
                         </div>
                     </div>
                 </div>
@@ -379,7 +395,6 @@
                             We propose <strong>DReX</strong>, a dataset-agnostic, accurate, and scalable <strong>D</strong>ense <strong>R</strong>etrieval <strong>Acc</strong>eleration scheme enabled through a novel algorithmic-hardware co-design. We leverage in-DRAM logic to enable early filtering of embedding vectors far from the query vector. An outside-DRAM near-memory accelerator then performs exact nearest neighbor searches on the remaining filtered embeddings. This resulting design minimizes off-chip data movement and ensures precise and efficient retrieval, laying the foundation for robust and performant RAG systems that are broadly applicable. Our evaluation shows that DReX delivers a 6.2-7× reduction in time-to-first-token for a representative RAG application over a state-of-the-art mechanism while incurring reasonable area and power overheads in the memory subsystem.</p>
                         <div class="publication-links">
                             <a href="drex.pdf" target="_blank" rel="noopener noreferrer" title="PDF"><i class="fas fa-file-pdf"></i></a>
-                            <a href="#" title="Project Link" class="unavailable"><i class="fas fa-link"></i></a>
                             <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
                             <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
                             <!-- *** BibTeX Button Added Here *** -->
@@ -420,7 +435,6 @@
                         <p><strong>Abstract:</strong> Conventional near-memory processing architectures often strike a trade-off between memory capacity and memory bandwidth, leading to high initial data movement or high capital costs due to memory stranding. In this work, we introduce compute-enabled memory expansion enabled by CXL as a solution for the widespread adoption of near-memory processing at scale. We present the Intelligent Knowledge Store (IKS), which is fundamentally a memory expander with lightweight near-memory accelerators that leverage high internal memory bandwidth to accelerate dense retrieval, a key component of retrieval-augmented generation (RAG). IKS disaggregates its internal memory capacity and supports both spatial and temporal multi-tenancy. It significantly accelerates high-quality dense retrieval while enabling multi-tenancy with modest memory access interference.</p>
                         <div class="publication-links">
                             <a href="cxl.pdf" target="_blank" rel="noopener noreferrer" title="PDF"><i class="fas fa-file-pdf"></i></a>
-                            <a href="#" title="Project Link" class="unavailable"><i class="fas fa-link"></i></a>
                             <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
                             <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
                             <!-- *** BibTeX Button Added Here *** -->
@@ -456,7 +470,6 @@
                             <br><br>In this work, we design Intelligent Knowledge Store (IKS), a type-2 CXL device that implements a scale-out near-memory acceleration architecture with a novel cache-coherent interface between the host CPU and near-memory accelerators. IKS offers 13.4–27.9× faster exact nearest neighbor search over a 512GB vector database compared with executing the search on Intel Sapphire Rapids CPUs. This higher search performance translates to 1.7–26.3× lower end-to-end inference time for representative RAG applications. IKS is inherently a memory expander; its internal DRAM can be disaggregated and used for other applications running on the server to prevent DRAM–which is the most expensive component in today's servers–from being stranded.</p>
                         <div class="publication-links">
                             <a href="https://arxiv.org/pdf/2412.15246" target="_blank" rel="noopener noreferrer" title="PDF"><i class="fas fa-file-pdf"></i></a>
-                            <a href="https://dl.acm.org/doi/10.1145/3669940.3707264"  target="_blank" rel="noopener noreferrer" title="DOI"><i class="fas fa-link"></i></a>
                             <a href="https://github.com/architecture-research-group/ae-asplos25-iks.git" target="_blank" rel="noopener noreferrer" title="Code"><i class="fas fa-code"></i></a>
                             <a href="ASPLOS_IKS.pdf" target="_blank" rel="noopener noreferrer" title="Slides"><i class="fas fa-file-powerpoint"></i></a>
                              <!-- *** BibTeX Button Added Here *** -->
@@ -501,21 +514,20 @@
                         </p>
                          <div class="publication-links">
                             <a href="#" title="PDF" class="unavailable"><i class="fas fa-file-pdf"></i></a>
-                            <a href="https://dl.acm.org/doi/10.1145/3613424.3623776" target="_blank" rel="noopener noreferrer" title="DOI"><i class="fas fa-link"></i></a>
                             <a href="#" title="Code" class="unavailable"><i class="fas fa-code"></i></a>
                             <a href="#" title="Slides" class="unavailable"><i class="fas fa-file-powerpoint"></i></a>
                              <!-- *** BibTeX Button Added Here *** -->
                             <a href="#" title="BibTeX" class="bibtex-btn" data-bs-toggle="modal" data-bs-target="#bibtexModal"
                                data-bibtex="@INPROCEEDINGS{patel_2023_xfm,
-author={Patel, Neel and Mamandipoor, Amin and Quinn, Derrick and Alian, Mohammad},
-booktitle={2023 56th IEEE/ACM International Symposium on Microarchitecture (MICRO)}, 
-title={XFM: Accelerated Software-Defined Far Memory}, 
-year={2023},
-volume={},
-number={},
-pages={769-783},
-keywords={Costs;Random access memory;Bandwidth;Switches;Servers;Field programmable gate arrays;Carbon footprint;Near-Memory Processing;Accelerator;Compression},
-doi={}
+    author={Patel, Neel and Mamandipoor, Amin and Quinn, Derrick and Alian, Mohammad},
+    booktitle={2023 56th IEEE/ACM International Symposium on Microarchitecture (MICRO)}, 
+    title={XFM: Accelerated Software-Defined Far Memory}, 
+    year={2023},
+    volume={},
+    number={},
+    pages={769-783},
+    keywords={Costs;Random access memory;Bandwidth;Switches;Servers;Field programmable gate arrays;Carbon footprint;Near-Memory Processing;Accelerator;Compression},
+    doi={}
 }"
                                data-filename="patel2023xfm.bib">
                                 <i class="fas fa-quote-right"></i>
