@@ -1,0 +1,10 @@
+# Local paper source archives contain drafts and comments; do not publish them.
+/*.zip
+
+# Local paper conversion tooling and provenance; publish only the converted papers.
+/scripts/
+/papers/conversion-manifest.json
+/papers/README.md
+
+# macOS filesystem metadata.
+.DS_Store
